@@ -8,7 +8,7 @@ import Logo from '../assets/logo.png'
 const Login = () => {
 
     return (
-        <Grid style={{ minHeight: "100vh" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
+        <Grid style={{ minHeight: "100vh" }} display="flex" direction="column" item container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
             <Grid item container direction="column" justifyContent="center" alignItems="center">
                 <img src={Logo} alt="Logo" width="100" />
                 <Button style={{ margin: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign In with Google</Button>
