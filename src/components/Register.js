@@ -6,13 +6,13 @@ import Logo from '../assets/logo.png';
 
 const Register = () => {
     return (
-        <Grid style={{ minHeight: "100vh", padding: "2rem" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
+        <Grid sx={{ minHeight: "100vh", p: "2rem" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
             <Grid item container direction="column" justifyContent="center" alignItems="center">
                 <img src={Logo} alt="Logo" width="100" />
-                <Button style={{ margin: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign Up with Google</Button>
-                <Divider style={{ width: "40%", marginBottom: '2rem', color: "rgba(0,0,0,0.3)" }}>OR</Divider>
+                <Button sx={{ m: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign Up with Google</Button>
+                <Divider sx={{ width: "40%", mb: '2rem', color: "rgba(0,0,0,0.3)" }}>OR</Divider>
                 <TextField
-                    style={{ width: "60%" }}
+                    sx={{ width: "60%" }}
                     margin="dense"
                     label="Name"
                     variant="standard"
@@ -20,7 +20,7 @@ const Register = () => {
                         startAdornment: <InputAdornment position="start"><PersonIcon /></InputAdornment>,
                     }} />
                 <TextField
-                    style={{ width: "60%" }}
+                    sx={{ width: "60%" }}
                     margin="dense"
                     label="E-mail"
                     variant="standard"
@@ -30,7 +30,7 @@ const Register = () => {
                         startAdornment: <InputAdornment position="start"><EmailIcon /></InputAdornment>,
                     }} />
                 <TextField
-                    style={{ width: "60%" }}
+                    sx={{ width: "60%" }}
                     margin="dense" label="Password"
                     type="password"
                     variant="standard"
@@ -39,7 +39,7 @@ const Register = () => {
                         startAdornment: <InputAdornment position="start"><LockIcon /></InputAdornment>,
                     }} />
                 <TextField
-                    style={{ width: "60%" }}
+                    sx={{ width: "60%" }}
                     margin="dense" label="Confirm Password"
                     type="password"
                     variant="standard"
@@ -50,7 +50,7 @@ const Register = () => {
                     }} />
             </Grid>
             <Grid item >
-                <Button style={{ margin: "2rem" }} variant="contained">Sign Up</Button>
+                <Button sx={{ m: "2rem" }} variant="contained">Sign Up</Button>
 
             </Grid>
             <Grid item>

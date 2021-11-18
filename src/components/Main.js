@@ -1,13 +1,16 @@
+import { Grid, Paper } from '@mui/material'
 import React from 'react'
 import Dialogue from './Dialogue'
 import Messages from './Messages'
 
 const Main = () => {
     return (
-        <div>
-            <Messages />
-            <Dialogue />
-        </div>
+        <Grid item md={6} alignSelf="baseline">
+            <Paper sx={{ p: 3 }} elevation={0}>
+                <Messages />
+                <Dialogue />
+            </Paper>
+        </Grid>
     )
 }
 

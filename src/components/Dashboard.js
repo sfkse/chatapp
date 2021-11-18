@@ -1,10 +1,14 @@
+import { Grid } from '@mui/material'
 import React from 'react'
+import Main from './Main'
+import Options from './Options'
 
 const Dashboard = () => {
     return (
-        <div>
-            Dashboard
-        </div>
+        <Grid sx={{ height: "100vh" }} container spacing={4} justifyContent="center" alignItems="center" alignContent="space-around" >
+            <Options />
+            <Main />
+        </Grid>
     )
 }
 
