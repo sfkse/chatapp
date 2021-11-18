@@ -1,43 +1,16 @@
 import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from '@mui/material'
 import { deepPurple } from '@mui/material/colors'
-import React from 'react'
-
+import StarIcon from '@mui/icons-material/Star';
 const Menu = () => {
     return (
         <List>
-            <ListItem disablePadding>
+            <ListItem disablePadding sx={{ justifyContent: "flex-start" }} >
                 <ListItemButton sx={{ p: 2 }}>
                     <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
+                        <StarIcon sx={{ color: deepPurple[500] }} />
                     </ListItemAvatar>
                     <ListItemText
-                        primary="Sefa Köse"
-                        secondary="Hey buddy!"
-                    />
-
-                </ListItemButton>
-            </ListItem>
-            <Divider variant="middle" component="li" />
-            <ListItem disablePadding>
-                <ListItemButton sx={{ p: 2 }}>
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Sefa Köse"
-                        secondary="Hey buddy!"
-                    />
-                </ListItemButton>
-            </ListItem>
-            <Divider variant="middle" component="li" />
-            <ListItem disablePadding>
-                <ListItemButton sx={{ p: 2 }}>
-                    <ListItemAvatar>
-                        <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Sefa Köse"
-                        secondary="Hey buddy!"
+                        primary={<Typography >Archived messages</Typography>}
                     />
                 </ListItemButton>
             </ListItem>
