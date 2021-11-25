@@ -1,4 +1,4 @@
-import { Avatar, Divider, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Typography } from '@mui/material'
 import { deepPurple } from '@mui/material/colors'
 import StarIcon from '@mui/icons-material/Star';
 const Menu = () => {

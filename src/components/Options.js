@@ -5,7 +5,7 @@ import Menu from './Menu'
 
 const Options = () => {
     return (
-        <Grid item md={3}>
+        <Grid item md={2}>
             <Paper sx={{ p: 3, mb: 2 }} elevation={0}>
                 <Logo />
             </Paper>
