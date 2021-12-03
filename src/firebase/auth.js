@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -14,20 +13,20 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
-
-export const signUpUser = (values) => {
+export const signUpUser = (values, setUserAuth, setError, navigate) => {
     const auth = getAuth();
 
     createUserWithEmailAndPassword(auth, values.email, values.password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user)
+            // console.log(user.auth.currentUser.emailVerified)
+            setUserAuth(user.auth.currentUser)
+            navigate('/')
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
+            // const errorMessage = error.message;
+            setError(errorCode)
         });
 }

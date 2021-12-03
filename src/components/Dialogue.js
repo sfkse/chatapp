@@ -9,7 +9,6 @@ import { theme } from '../theme'
 
 const Dialogue = () => {
 
-    console.log(theme)
     return (
         <Grid container direction="column">
             <Grid item sm={12} display="flex" justifyContent="flex-end">
