@@ -1,11 +1,15 @@
 import { Button, Divider, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
 import Logo from '../assets/logo.png';
+import Alert from '@mui/material/Alert';
 import { useFormik } from 'formik';
-import { Box } from '@mui/system';
 import { signUpUser } from '../firebase/auth';
+import { useNavigate } from 'react-router';
+import { ChatContext } from './ChatContext';
+import { useContext, useState } from 'react';
 
 const validate = values => {
     const errors = {};
@@ -31,6 +35,9 @@ const validate = values => {
 }
 
 const Register = () => {
+    const [setUserAuth] = useContext(ChatContext)
+    const [error, setError] = useState()
+    const navigate = useNavigate()
 
     const formik = useFormik({
         initialValues: {
@@ -41,11 +48,10 @@ const Register = () => {
         },
         validate,
         onSubmit: values => {
-            signUpUser(values)
+            signUpUser(values, setUserAuth, setError, navigate)
         }
     })
 
-    console.log(formik)
     return (
         <Grid sx={{ minHeight: "100vh", p: "2rem" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
             <Box component="form" onSubmit={formik.handleSubmit} sx={{ width: "100%" }}>
@@ -53,10 +59,11 @@ const Register = () => {
                     <img src={Logo} alt="Logo" width="100" />
                     <Button sx={{ m: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign Up with Google</Button>
                     <Divider sx={{ width: "40%", mb: '2rem', color: "rgba(0,0,0,0.3)" }}><Typography>OR</Typography></Divider>
+                    {error ? <Alert severity="error">The email address you provide is already exist!</Alert> : null}
                     <TextField
                         sx={{ width: "60%" }}
                         margin="dense"
-                        label="Name"
+                        label="Name*"
                         name="name"
                         variant="standard"
                         onChange={formik.handleChange}
@@ -69,7 +76,7 @@ const Register = () => {
                     <TextField
                         sx={{ width: "60%" }}
                         margin="dense"
-                        label="E-mail"
+                        label="E-mail*"
                         name="email"
                         variant="standard"
                         error={formik.errors.email ? true : false}
@@ -82,7 +89,7 @@ const Register = () => {
                     <TextField
                         sx={{ width: "60%" }}
                         margin="dense"
-                        label="Password"
+                        label="Password*"
                         name="password"
                         type="password"
                         variant="standard"
@@ -96,7 +103,7 @@ const Register = () => {
                     <TextField
                         sx={{ width: "60%" }}
                         margin="dense"
-                        label="Confirm Password"
+                        label="Confirm Password*"
                         name="passwordConfirm"
                         type="password"
                         variant="standard"
