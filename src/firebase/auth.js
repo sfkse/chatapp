@@ -20,7 +20,7 @@ export const signUpUser = (values, setUserAuth, setError, navigate) => {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            // console.log(user.auth.currentUser.emailVerified)
+            // console.log(userCredential)
             setUserAuth(user.auth.currentUser)
             navigate('/')
         })

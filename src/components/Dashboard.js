@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!userAuth) navigate('/register')
-    }, [])
+    }, [userAuth])
 
     return (
         <Grid sx={{ height: "90vh", mt: "3rem" }} container justifyContent="center" >

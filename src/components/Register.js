@@ -35,7 +35,7 @@ const validate = values => {
 }
 
 const Register = () => {
-    const [setUserAuth] = useContext(ChatContext)
+    const [userAuth, setUserAuth] = useContext(ChatContext)
     const [error, setError] = useState()
     const navigate = useNavigate()
 
