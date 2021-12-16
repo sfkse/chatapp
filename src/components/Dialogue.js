@@ -16,7 +16,7 @@ const Dialogue = () => {
                 <IconButton size="small"><DeleteIcon fontSize="10px" /></IconButton>
             </Grid>
             <Grid item sm={12}>
-                <Box sx={{ height: "500px", backgroundColor: deepPurple[50], borderRadius: "5px", padding: "2rem" }}>
+                <Box sx={{ height: "400px", backgroundColor: deepPurple[50], borderRadius: "5px", padding: "2rem" }}>
                     <Box sx={{ display: "flex", alignItems: "baseline" }}>
                         <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
                         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>

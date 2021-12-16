@@ -1,8 +1,9 @@
-import { Button, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material';
+import { Button, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import Logo from '../assets/logo.png'
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
             <Grid item container direction="column" justifyContent="center" alignItems="center">
                 <img src={Logo} alt="Logo" width="100" />
                 <Button sx={{ m: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign In with Google</Button>
-                <Divider sx={{ width: "40%", mb: '2rem', color: "rgba(0,0,0,0.3)" }}>OR</Divider>
+                <Divider sx={{ width: "40%", mb: '2rem', color: "rgba(0,0,0,0.3)" }}><Typography>OR</Typography></Divider>
                 <TextField
                     sx={{ width: "60%" }}
                     margin="dense"
@@ -34,13 +35,13 @@ const Login = () => {
                         startAdornment: <InputAdornment position="start"><LockIcon /></InputAdornment>,
                     }} />
             </Grid>
-            <Grid item >
-                <Link sx={{ m: "2rem" }} href="/reset" size="small">Forgot your password?</Link>
+            <Grid item display="flex" justifyContent="space-between" alignItems="center">
+                <Link sx={{ m: "2rem" }} href="/reset" size="small"><Typography variant="body2">Forgot your password?</Typography></Link>
                 <Button sx={{ m: "2rem" }} variant="contained">Sign In</Button>
 
             </Grid>
             <Grid item>
-                <Typography variant="body2">Don't you have an account? Create one <Link href="/register">here</Link></Typography>
+                <Typography variant="body2">Don't you have an account? Create one <Link href="register">here</Link></Typography>
             </Grid>
         </Grid>
     )
