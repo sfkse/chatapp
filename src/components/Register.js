@@ -1,4 +1,4 @@
-import { Button, Divider, Grid, InputAdornment, Link, TextField, Typography } from '@mui/material';
+import { Button, Divider, Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -6,10 +6,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import Logo from '../assets/logo.png';
 import Alert from '@mui/material/Alert';
 import { useFormik } from 'formik';
-import { signUpUser } from '../firebase/auth';
+import { signUpUser, signupWithGoogle } from '../firebase/auth';
 import { useNavigate } from 'react-router';
 import { ChatContext } from './ChatContext';
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const validate = values => {
     const errors = {};
@@ -52,12 +53,24 @@ const Register = () => {
         }
     })
 
+    const handleGoogleSignUp = (e) => {
+        e.preventDefault()
+        signupWithGoogle()
+    }
+
     return (
         <Grid sx={{ minHeight: "100vh", p: "2rem" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
             <Box component="form" onSubmit={formik.handleSubmit} sx={{ width: "100%" }}>
                 <Grid item container direction="column" justifyContent="center" alignItems="center">
                     <img src={Logo} alt="Logo" width="100" />
-                    <Button sx={{ m: '2rem', width: '200px' }} variant="outlined" fullWidth >Sign Up with Google</Button>
+                    <Button
+                        sx={{ m: '2rem', width: '200px' }}
+                        variant="outlined"
+                        fullWidth
+                        onClick={handleGoogleSignUp}
+                    >
+                        Sign Up with Google
+                    </Button>
                     <Divider sx={{ width: "40%", mb: '2rem', color: "rgba(0,0,0,0.3)" }}><Typography>OR</Typography></Divider>
                     {error ? <Alert severity="error">The email address you provide is already exist!</Alert> : null}
                     <TextField
@@ -120,7 +133,7 @@ const Register = () => {
                 </Grid>
             </Box>
             <Grid item>
-                <Typography variant="body2">Do you have an account already? Sign in <Link href="/register">here</Link></Typography>
+                <Typography variant="body2">Do you already have an account? Sign in <Link to="login">here</Link></Typography>
             </Grid>
         </Grid >
     )
