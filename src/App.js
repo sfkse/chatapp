@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { ChatProvider } from './components/ChatContext';
 import Dashboard from './components/Dashboard';
@@ -9,12 +9,12 @@ import Register from './components/Register';
 function App() {
   return (
     <ChatProvider>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path='*' element={<p>There is nothing here</p>} />
-      </Routes>
+      <Switch>
+        <Route path="/dashboard"><Dashboard /></Route>
+        <Route path="/register" ><Register /></Route>
+        <Route path="/login"><Login /></Route>
+        {/* <Route path='*' element={<p>There is nothing here</p>} /> */}
+      </Switch>
     </ChatProvider>
   );
 }
