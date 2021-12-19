@@ -48,7 +48,7 @@ const Login = () => {
         signupWithGoogle(setUserAuth, history)
     }
     return (
-        <Grid sx={{ minHeight: "100vh" }} display="flex" direction="column" item container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
+        <Grid sx={{ minHeight: "100vh", p: "2rem" }} display="flex" direction="column" container xs={12} sm={8} md={5} spacing="3" margin="auto" justifyContent="center" alignItems="center">
             <Box component="form" onSubmit={formik.handleSubmit} sx={{ width: "100%" }}>
 
                 <Grid item container direction="column" justifyContent="center" alignItems="center">
@@ -88,21 +88,19 @@ const Login = () => {
                         InputProps={{
                             startAdornment: <InputAdornment position="start"><LockIcon /></InputAdornment>,
                         }} />
+
+                    <Grid item >
+                        <Button type="submit" sx={{ m: "2rem" }} variant="contained">Sign In</Button>
+                    </Grid>
+
+                    <Grid item >
+                        <Link sx={{ m: "2rem" }} href="/reset" size="small"><Typography variant="body2">Forgot your password?</Typography></Link>
+                    </Grid>
+                    <Grid item sx={{ mt: "2rem" }}>
+                        <Typography variant="body2">Don't you have an account? Create one <Link to="register">here</Link></Typography>
+                    </Grid>
                 </Grid>
 
-                <Grid item display="flex" justifyContent="space-between" alignItems="center">
-                    <Link sx={{ m: "2rem" }} href="/reset" size="small"><Typography variant="body2">Forgot your password?</Typography></Link>
-                    <Button
-                        type="submit"
-                        sx={{ m: "2rem" }}
-                        variant="contained"
-                    > Sign In
-                    </Button>
-
-                </Grid>
-                <Grid item>
-                    <Typography variant="body2">Don't you have an account? Create one <Link to="register">here</Link></Typography>
-                </Grid>
             </Box>
         </Grid>
     )
