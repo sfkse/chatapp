@@ -44,8 +44,7 @@ const Login = () => {
         }
     })
 
-    const handleGoogleSignIn = (e) => {
-        e.preventDefault()
+    const handleGoogleSignIn = () => {
         signupWithGoogle(setUserAuth, history)
     }
     return (

@@ -52,8 +52,7 @@ const Register = () => {
         }
     })
 
-    const handleGoogleSignUp = (e) => {
-        e.preventDefault()
+    const handleGoogleSignUp = () => {
         signupWithGoogle(setUserAuth, history)
     }
 
