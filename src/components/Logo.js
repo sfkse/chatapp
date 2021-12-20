@@ -1,15 +1,14 @@
-import { Avatar, Grid, IconButton, Tooltip, Typography } from '@mui/material'
+import { Avatar, Grid, Tooltip, Typography } from '@mui/material'
 import { deepPurple } from '@mui/material/colors'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { getSignedInUser, signOutUser } from '../firebase/auth';
-import { useHistory } from 'react-router-dom';
+import { getSignedInUser } from '../firebase/auth';
 import { useContext, useEffect } from 'react';
 import { ChatContext } from './ChatContext';
 
 const Logo = () => {
     const { userAuth, setUserAuth, setLoading } = useContext(ChatContext);
-    const history = useHistory()
+
     useEffect(() => {
         getSignedInUser(setUserAuth, setLoading)
     }, [])
