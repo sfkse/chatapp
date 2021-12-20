@@ -7,10 +7,9 @@ import Logo from '../assets/logo.png';
 import Alert from '@mui/material/Alert';
 import { useFormik } from 'formik';
 import { signUpUser, signupWithGoogle } from '../firebase/auth';
-import { useNavigate } from 'react-router';
 import { ChatContext } from './ChatContext';
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const validate = values => {
     const errors = {};
@@ -36,9 +35,9 @@ const validate = values => {
 }
 
 const Register = () => {
-    const [userAuth, setUserAuth] = useContext(ChatContext)
+    const { setUserAuth } = useContext(ChatContext)
     const [error, setError] = useState()
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const formik = useFormik({
         initialValues: {
@@ -49,13 +48,13 @@ const Register = () => {
         },
         validate,
         onSubmit: values => {
-            signUpUser(values, setUserAuth, setError, navigate)
+            signUpUser(values, setUserAuth, setError, history)
         }
     })
 
     const handleGoogleSignUp = (e) => {
         e.preventDefault()
-        signupWithGoogle()
+        signupWithGoogle(setUserAuth, history)
     }
 
     return (

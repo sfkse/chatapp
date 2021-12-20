@@ -6,6 +6,8 @@ import { Box } from '@mui/system';
 import FormControl from '@mui/material/FormControl';
 import { deepPurple } from '@mui/material/colors';
 import { theme } from '../theme'
+import { useRef } from 'react';
+import { addMessage } from '../firebase/auth';
 
 const Dialogue = () => {
 
@@ -83,7 +85,7 @@ const Dialogue = () => {
                     <OutlinedInput
                         endAdornment={
                             <InputAdornment position="end">
-                                <IconButton>
+                                <IconButton >
                                     <SendIcon sx={{ color: theme.palette.primary.light }} />
                                 </IconButton>
                             </InputAdornment>

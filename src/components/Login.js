@@ -28,9 +28,10 @@ const validate = values => {
 
 
 const Login = () => {
-    const [userAuth, setUserAuth] = useContext(ChatContext)
+    const { setUserAuth } = useContext(ChatContext)
     const [error, setError] = useState()
     const history = useHistory()
+
 
     const formik = useFormik({
         initialValues: {
@@ -39,7 +40,7 @@ const Login = () => {
         },
         validate,
         onSubmit: values => {
-            signInUser(values, setError, history)
+            signInUser(values, setUserAuth, setError, history)
         }
     })
 
