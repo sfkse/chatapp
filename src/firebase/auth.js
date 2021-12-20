@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -13,13 +13,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth();
 
 export const signUpUser = (values, setUserAuth, setError, history) => {
-    const auth = getAuth();
-
     createUserWithEmailAndPassword(auth, values.email, values.password)
-        .then((userCredential) => {
-            const user = userCredential.user.email
+        .then(() => {
             sendEmailVerification(auth.currentUser)
                 .then(() => {
                     console.log('email sent!')
@@ -27,11 +25,14 @@ export const signUpUser = (values, setUserAuth, setError, history) => {
                 .catch(error => {
                     console.log(error.message);
                 });
-            setUserAuth(user)
-            history.push('/')
+            updateProfile(auth.currentUser, {
+                displayName: values.name
+            }).then(() => {
+                setUserAuth(auth.currentUser)
+                history.push('/')
+            })
 
-        })
-        .catch((error) => {
+        }).catch((error) => {
             const errorCode = error.code;
             // const errorMessage = error.message;
             setError(errorCode)
@@ -41,7 +42,6 @@ export const signUpUser = (values, setUserAuth, setError, history) => {
 }
 
 export const signInUser = async (credentials, setUserAuth, setError, history) => {
-    const auth = getAuth();
     await signInWithEmailAndPassword(auth, credentials.email, credentials.password)
         .then((userCredential) => {
             // Signed in 
@@ -55,7 +55,6 @@ export const signInUser = async (credentials, setUserAuth, setError, history) =>
         });
 }
 export const signupWithGoogle = (setUserAuth, history) => {
-    const auth = getAuth();
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
@@ -71,7 +70,6 @@ export const signupWithGoogle = (setUserAuth, history) => {
 }
 
 export const getSignedInUser = (setUserAuth, setLoading) => {
-    const auth = getAuth();
     const unsub = onAuthStateChanged(auth, (user) => {
         setUserAuth(user)
         setLoading(false)
@@ -80,7 +78,6 @@ export const getSignedInUser = (setUserAuth, setLoading) => {
 }
 
 export const signOutUser = (history) => {
-    const auth = getAuth();
     signOut(auth).then(() => {
         history.push('/login')
     }).catch((error) => {
