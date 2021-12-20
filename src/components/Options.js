@@ -1,6 +1,7 @@
 import { Grid, Paper } from '@mui/material'
 import React from 'react'
 import Logo from './Logo'
+import LogOut from './LogOut'
 import Menu from './Menu'
 
 const Options = () => {
@@ -9,8 +10,11 @@ const Options = () => {
             <Paper sx={{ p: 3, mb: 2 }} elevation={0}>
                 <Logo />
             </Paper>
-            <Paper elevation={0}>
+            <Paper sx={{ mb: 2 }} elevation={0}>
                 <Menu />
+            </Paper>
+            <Paper elevation={0}>
+                <LogOut />
             </Paper>
         </Grid>
     )
