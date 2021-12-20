@@ -6,8 +6,6 @@ import { Box } from '@mui/system';
 import FormControl from '@mui/material/FormControl';
 import { deepPurple } from '@mui/material/colors';
 import { theme } from '../theme'
-import { useRef } from 'react';
-import { addMessage } from '../firebase/auth';
 
 const Dialogue = () => {
 
