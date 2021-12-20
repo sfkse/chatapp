@@ -11,7 +11,7 @@ const Logo = () => {
 
     useEffect(() => {
         getSignedInUser(setUserAuth, setLoading)
-    }, [])
+    }, [setLoading, setUserAuth])
 
     return (
         <Grid item display="flex" alignItems="center">
