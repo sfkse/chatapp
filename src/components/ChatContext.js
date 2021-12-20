@@ -14,7 +14,8 @@ export const ChatProvider = props => {
     }, [])
     const value = {
         userAuth,
-        setUserAuth
+        setUserAuth,
+        setLoading
     }
     return (
         <ChatContext.Provider value={value}>
